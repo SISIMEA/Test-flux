@@ -1,15 +1,16 @@
-apiVersion: batch/v1
-kind: Job
+apiVersion: v1
+kind: Pod
 metadata:
-  name: db-migration
+  creationTimestamp: null
+  labels:
+    run: n1
+  name: n1
 spec:
-  template:
-    spec:
-      restartPolicy: Never
-      containers:
-      - name: migration
-        image: ghcr.io/org/my-app:v1.0.0
-        command:
-          - sh
-          - -c
-          - echo "starting db migration"
+  containers:
+  - image: nginx:1.23
+    name: n1
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+
